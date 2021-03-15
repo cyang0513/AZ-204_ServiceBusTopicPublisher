@@ -17,6 +17,7 @@ namespace ServiceBusTopicPublisher
 
          Console.WriteLine("Type messages, one msg per line, Q to end input...");
 
+         var sessionId = Guid.NewGuid().ToString();
          var msgList = new List<Message>();
          while (true)
          {
@@ -27,7 +28,7 @@ namespace ServiceBusTopicPublisher
             }
 
             msgList.Add(new Message(Encoding.UTF8.GetBytes(msg)){
-                              SessionId = Guid.NewGuid().ToString()
+                              SessionId = sessionId
                            }
                );
 
